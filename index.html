@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>🌹 Mayie & Ian · Eternal Promise 🌹</title>
+    <style>
+        :root {
+            --primary: #ff6b8b;
+            --primary-dark: #e84a6e;
+            --gold: #d4af37;
+            --bg-start: #1a0a1e;
+            --bg-end: #2d1a2f;
+            --cream: #fff8f0;
+            --text-dark: #3d2626;
+            --text-soft: #b45f5f;
+            --shadow-lg: 0 20px 40px rgba(0,0,0,0.3);
+            --shadow-glow: 0 0 30px rgba(255,107,139,0.3);
+            --radius-xl: 32px;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-start) 0%, #2a1040 30%, #1a1530 60%, var(--bg-end) 100%);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px;
+            position: fixed;
+            inset: 0;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(255,107,139,0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 60%, rgba(212,175,55,0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(255,182,193,0.12) 0%, transparent 50%);
+            animation: bgShift 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes bgShift {
+            0%, 100% { transform: scale(1); }
+            33% { transform: scale(1.05); }
+            66% { transform: scale(0.97); }
+        }
+
+        .particles-container {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            animation: floatParticle linear infinite;
+            opacity: 0;
+            filter: blur(0.5px);
+        }
+
+        @keyframes floatParticle {
+            0% { transform: translateY(105vh) rotate(0deg) scale(0); opacity: 0; }
+            5% { opacity: 0.8; }
+            90% { opacity: 0.4; }
+            100% { transform: translateY(-10vh) rotate(360deg) scale(1.3); opacity: 0; }
+        }
+
+        .page {
+            background: linear-gradient(180deg, rgba(255,248,240,0.97) 0%, rgba(255,242,232,0.95) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            max-width: 480px;
+            width: 100%;
+            height: 92vh;
+            height: 92dvh;
+            margin: 0 auto;
+            border-radius: var(--radius-xl);
+            box-shadow: 
+                var(--shadow-lg),
+                0 0 0 1px rgba(255,180,160,0.5),
+                inset 0 1px 0 rgba(255,255,255,0.5);
+            position: relative;
+            z-index: 2;
+            animation: pageEnter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .page-content {
+            padding: 28px 20px 32px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            flex: 1;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+        }
+
+        .page-content::-webkit-scrollbar {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+
+        .page-content {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        @keyframes pageEnter {
+            from { opacity: 0; transform: translateY(30px) scale(0.96); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .page-exit {
+            animation: pageExit 0.35s cubic-bezier(0.55, 0, 1, 0.45) forwards;
+        }
+
+        @keyframes pageExit {
+            to { opacity: 0; transform: translateY(-20px) scale(0.96); }
+        }
+
+        .hidden-page {
+            display: none !important;
+        }
+
+        .hero-title {
+            font-size: clamp(1.6rem, 5vw, 2.2rem);
+            text-align: center;
+            font-weight: 700;
+            background: linear-gradient(135deg, #c44569, #e66767, #ff8a80);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 8px 0;
+            line-height: 1.2;
+            letter-spacing: -0.3px;
+            animation: textShimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes textShimmer {
+            0%, 100% { filter: brightness(1) saturate(1); }
+            50% { filter: brightness(1.25) saturate(1.2); }
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--text-soft);
+            margin-bottom: 16px;
+            font-style: italic;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+        }
+
+        .gif-row {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin: 16px 0;
+            flex-wrap: wrap;
+        }
+
+        .gif-card {
+            background: rgba(255, 240, 235, 0.8);
+            border-radius: var(--radius-lg);
+            padding: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(255,180,160,0.3);
+        }
+
+        .gif-card:active {
+            transform: scale(0.97);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .gif-card .tenor-gif-embed {
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+
+        .gif-card p {
+            font-weight: 600;
+            color: #b13e3e;
+            font-size: 0.9rem;
+        }
+
+        button {
+            background: var(--primary);
+            border: none;
+            color: white;
+            font-weight: 600;
+            font-size: 1.05rem;
+            padding: 14px 20px;
+            border-radius: 50px;
+            width: 100%;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            font-family: inherit;
+            letter-spacing: 0.3px;
+            position: relative;
+            overflow: hidden;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+            border-radius: 50px;
+            transition: opacity 0.3s;
+            opacity: 0;
+        }
+
+        button:active::before {
+            opacity: 1;
+        }
+
+        button:active {
+            transform: scale(0.97);
+        }
+
+        .btn-secondary {
+            background: #c0a0a8;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, #f8b500, #e6a400);
+            color: #4a3000;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .flex-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .flex-row button {
+            flex: 1;
+        }
+
+        .security-box {
+            background: rgba(255, 240, 245, 0.9);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin: 16px 0;
+            text-align: center;
+            border: 2px solid #ffb7c5;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 50px;
+            border: 2px solid #ffb7c5;
+            text-align: center;
+            font-size: 1rem;
+            margin-top: 10px;
+            transition: var(--transition-smooth);
+            font-family: inherit;
+            background: white;
+            -webkit-appearance: none;
+            appearance: none;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(255,107,139,0.25);
+        }
+
+        .error-message {
+            color: #d9534f;
+            font-size: 0.85rem;
+            margin-top: 8px;
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-8px); }
+            40% { transform: translateX(8px); }
+            60% { transform: translateX(-6px); }
+            80% { transform: translateX(6px); }
+        }
+
+        .child-img {
+            text-align: center;
+            margin: 16px 0;
+        }
+
+        .child-img img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            border: 4px solid var(--gold);
+            animation: glowPulse 3s ease-in-out infinite;
+            object-fit: cover;
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 8px 20px rgba(0,0,0,0.2), 0 0 20px rgba(212,175,55,0.4); }
+            50% { box-shadow: 0 8px 20px rgba(0,0,0,0.2), 0 0 40px rgba(212,175,55,0.7); }
+        }
+
+        .bouquet-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 20px 0;
+            min-height: 160px;
+            animation: gentleFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        .flower {
+            font-size: 2.5rem;
+            display: inline-block;
+            animation: flowerSway 3s ease-in-out infinite;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+            transition: transform 0.3s ease;
+        }
+
+        .flower:active {
+            transform: scale(1.3);
+        }
+
+        .flower:nth-child(odd) { animation-delay: 0s; }
+        .flower:nth-child(even) { animation-delay: 1.5s; }
+
+        @keyframes flowerSway {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        .envelope-card {
+            background: #fffaf2;
+            border-radius: var(--radius-xl);
+            padding: 20px 16px;
+            cursor: pointer;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+            border: 2px dashed #ff9f9f;
+            transition: var(--transition-smooth);
+            text-align: center;
+            animation: borderGlow 2.5s ease-in-out infinite;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { border-color: #ffaa88; box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
+            50% { border-color: var(--primary); box-shadow: 0 12px 30px rgba(0,0,0,0.12), 0 0 25px rgba(255,107,139,0.25); }
+        }
+
+        .envelope-card:active {
+            transform: scale(0.97);
+        }
+
+        .envelope-card .icon {
+            font-size: 3rem;
+            display: inline-block;
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .envelope-card p {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #b34b4b;
+            margin: 4px 0;
+        }
+
+        .envelope-card .hint {
+            font-size: 0.8rem;
+            color: #c27777;
+        }
+
+        .letter-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .letter-card {
+            background: linear-gradient(135deg, #fffaf5, #fff5ee);
+            padding: 22px 18px;
+            border-radius: var(--radius-lg);
+            line-height: 1.8;
+            color: var(--text-dark);
+            border-left: 8px solid var(--primary);
+            font-size: 0.95rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        .letter-card.favian {
+            border-left-color: #f4b642;
+            background: linear-gradient(135deg, #fffef5, #fff9e0);
+        }
+
+        .letter-card p {
+            margin-bottom: 10px;
+        }
+
+        /* Favian image styling */
+        .favian-profile-img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 4px solid gold;
+            object-fit: cover;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            display: block;
+            margin: 0 auto;
+        }
+
+        .certificate {
+            background: linear-gradient(135deg, #fef7e0, #fdf2d0);
+            border: 6px double var(--gold);
+            padding: 24px 16px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin: 16px 0;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        .certificate::before {
+            content: '❤️';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.8rem;
+            background: var(--cream);
+            padding: 0 10px;
+            z-index: 2;
+        }
+
+        .certificate h3 {
+            font-size: 1.5rem;
+            color: #b3414b;
+            margin-bottom: 12px;
+        }
+
+        .cert-image {
+            max-width: 200px;
+            width: 100%;
+            border-radius: 20px;
+            border: 3px solid var(--gold);
+            margin: 12px auto;
+            display: block;
+            object-fit: cover;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .signature-img {
+            max-width: 160px;
+            max-height: 50px;
+            margin: 8px auto;
+            display: block;
+        }
+
+        canvas {
+            display: block;
+            margin: 12px auto;
+            background: #fffbf5;
+            border-radius: 16px;
+            max-width: 300px;
+            width: 100%;
+            touch-action: none;
+            border: 2px solid #f8c291;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            cursor: crosshair;
+        }
+
+        .reset-sign {
+            background: #ffaa88;
+            border: none;
+            color: white;
+            font-size: 0.8rem;
+            padding: 8px 18px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: inline-block;
+            margin-top: 8px;
+        }
+
+        .reset-sign:active {
+            transform: scale(0.95);
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(120px);
+            background: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            z-index: 1000;
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            pointer-events: none;
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .confetti-piece {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999;
+            animation: confettiFall linear forwards;
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+        }
+
+        @media (max-width: 380px) {
+            .page-content {
+                padding: 20px 14px 24px;
+            }
+            .hero-title {
+                font-size: 1.4rem;
+            }
+            button {
+                font-size: 0.95rem;
+                padding: 12px 16px;
+            }
+            .flower {
+                font-size: 2rem;
+            }
+            .favian-profile-img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        @media (min-width: 420px) {
+            .page-content {
+                padding: 32px 24px 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="particles-container" id="particlesContainer"></div>
+    <div class="toast" id="toast"></div>
+
+    <!-- PAGE: Gift Intro -->
+    <div id="giftPage" class="page">
+        <div class="page-content">
+            <div class="hero-title">Hey love, I have a gift for you 💝</div>
+            <div class="gif-row">
+                <div class="gif-card">
+                    <div class="tenor-gif-embed" data-postid="11281789330777755573" data-share-method="host" data-aspect-ratio="1.03478" data-width="100%">
+                        <a href="https://tenor.com/view/dudu-gif-11281789330777755573">Dudu Sticker</a>
+                    </div>
+                    <p>🌸 a little surprise 🌸</p>
+                </div>
+            </div>
+            <button id="proceedToLoveBtn" class="btn-gold">✨ Open your gift ✨</button>
+        </div>
+    </div>
+
+    <!-- PAGE: Love Confirmation -->
+    <div id="page1" class="page hidden-page">
+        <div class="page-content">
+            <div class="hero-title">Only for my Love Marielle</div>
+            <div class="subtitle">My heartbeat forever ✨</div>
+            <div class="gif-row">
+                <div class="gif-card">
+                    <div class="tenor-gif-embed" data-postid="6033885021974215750" data-share-method="host" data-aspect-ratio="1" data-width="100%">
+                        <a href="https://tenor.com/view/dudu-butt-gif-6033885021974215750">Dudu Butt Sticker</a>
+                    </div>
+                    <p>pls love me 💕</p>
+                </div>
+            </div>
+            <div class="flex-row">
+                <button id="confirmLoveBtn">💖 Yes I love you</button>
+                <button id="noLoveBtn" class="btn-secondary">💔 Not really</button>
+            </div>
+            <div id="securitySection" style="display: none;">
+                <div class="security-box">
+                    <p style="font-weight: 600; font-size: 1.1rem;">🔐 Security Question 🔐</p>
+                    <p style="font-size: 0.9rem;">What is the name of our child?</p>
+                    <input type="text" id="childNameInput" placeholder="Write name here..." autocomplete="off">
+                    <div id="securityError" class="error-message"></div>
+                    <button id="verifyChildBtn" style="margin-top: 10px;">✨ Verify ✨</button>
+                </div>
+                <div id="childImageContainer" class="child-img" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE: Sad -->
+    <div id="sadPage" class="page hidden-page">
+        <div class="page-content">
+            <div style="text-align: center;">
+                <h2 style="color:#c94b4b;">😢 why... 😢</h2>
+                <div class="tenor-gif-embed" data-postid="15095038099989946717" data-share-method="host" data-aspect-ratio="0.948276" data-width="100%">
+                    <a href="https://tenor.com/view/dudu-crying-texting-phones-not-happy-sad-feel-bad-gif-15095038099989946717">Dudu Crying Texting Sticker</a>
+                </div>
+                <p style="font-size: 1.5rem; margin: 16px 0;">pls love me 🥺</p>
+                <button id="backToLoveBtn" class="btn-outline">🔙 Go back & love me</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE: Bouquet -->
+    <div id="bouquetPage" class="page hidden-page">
+        <div class="page-content">
+            <h2 style="color:#b3414b; text-align: center; margin-bottom: 12px;">🌹 A Garden of Roses for You My Love</h2>
+            <div class="bouquet-container">
+                <span class="flower">🌹</span><span class="flower">🌷</span><span class="flower">🌹</span>
+                <span class="flower">🌸</span><span class="flower">🌺</span><span class="flower">🌹</span>
+                <span class="flower">💐</span><span class="flower">🌻</span><span class="flower">🪷</span>
+                <span class="flower">🌿</span><span class="flower">🌹</span><span class="flower">🌷</span>
+            </div>
+            <p style="color: var(--text-soft); margin-bottom: 16px; text-align: center; font-weight: 500;">choose a letter, my love</p>
+            <div class="letter-grid">
+                <div class="envelope-card" id="openFavianLetterBtn">
+                    <span class="icon">🧸💌</span>
+                    <p>✉️ Letter from Favian</p>
+                    <span class="hint">(our baby boy)</span>
+                </div>
+                <div class="envelope-card" id="openIanLetterBtn">
+                    <span class="icon">💖✍️</span>
+                    <p>✉️ Letter from Ian</p>
+                    <span class="hint">(your future husband)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE: Ian's Letter -->
+    <div id="ianLetterPage" class="page hidden-page">
+        <div class="page-content">
+            <h2 style="color:#b3414b; text-align: center;">💌 From Ian, With Every Beat of My Heart</h2>
+            <div style="text-align: center; margin: 12px 0; font-size: 2rem;">
+                <span class="flower">🌹</span><span class="flower">🌸</span><span class="flower">🌺</span>
+            </div>
+            <div class="letter-card">
+                <p>My dearest Mayie, my forever love,</p>
+                <p>I'm writing this with tears in my eyes — not from sadness, but from the overwhelming gratitude I feel for you. From the very first <strong>"hiii hahaha"</strong> you sent, my soul recognized yours.</p>
+                <p>We have walked through storms that most people couldn't imagine: family disapproval, painful separations, and months where we couldn't even celebrate our love openly.</p>
+                <p>I am so sorry, my love. I'm sorry that our previous monthsaries passed without the celebration they deserved. I'm sorry that your birthday came and went, and I couldn't hold you the way I wanted to.</p>
+                <p>Because of you, I found strength I never knew I had. Because of you, I graduated. Because of you, I wake up every day wanting to be a better man.</p>
+                <p>You are my destiny, Marielle. My past, my present, and every tomorrow I pray for. I love you more than words can ever capture.</p>
+                <p style="text-align: right;"><strong>Forever yours,</strong><br><em>Ian Libosada</em></p>
+            </div>
+            <button id="fromIanToProposalBtn" style="margin-top: 16px;">💍 Continue to forever</button>
+        </div>
+    </div>
+
+    <!-- PAGE: Favian's Letter - ONLY IMAGE, NO DUPLICATE CIRCLE -->
+    <div id="favianLetterPage" class="page hidden-page">
+        <div class="page-content">
+            <h2 style="color:#b3414b; text-align: center;">🧸 A Letter from Favian 🧸</h2>
+            <div style="text-align: center; margin: 12px 0;">
+                <span class="flower">🌻</span><span class="flower">🌿</span><span class="flower">🪷</span>
+            </div>
+            <!-- FAVIAN'S IMAGE ONLY - NO FALLBACK CIRCLE -->
+            <div style="text-align: center; margin-bottom: 14px;">
+                <img src="favian.jpg" 
+                     alt="Favian" 
+                     class="favian-profile-img"
+                     onerror="this.style.display='none'">
+                <p style="font-weight:600; color:#b3414b; margin-top:8px;">👶 Favian 👶</p>
+            </div>
+            <div class="letter-card favian">
+                <p>Dear Mommy,</p>
+                <p>Thank you for every sleepless night you spent beside me. For the times you got hurt by family because of me, but still held me tight.</p>
+                <p>You sacrificed your comfort, your peace, just so I could feel safe. I promise I will be a good boy when I grow up.</p>
+                <p>I will protect you the way you protected me. You are the best mommy in the whole world.</p>
+                <p style="text-align: right;">Your little one,<br><strong>Favian 🧸</strong></p>
+            </div>
+            <button id="backToBouquetFromFavianBtn" class="btn-secondary" style="margin-top: 14px;">🔙 Back to bouquet</button>
+        </div>
+    </div>
+
+    <!-- PAGE: Proposal -->
+    <div id="proposalPage" class="page hidden-page">
+        <div class="page-content">
+            <div style="text-align: center;">
+                <h2 style="color:#b3414b;">Will you marry me, Marielle? 💍</h2>
+                <div style="font-size: 2rem; margin: 16px 0; animation: textShimmer 2s ease-in-out infinite;">🌹 Marielle 🌹</div>
+                <p style="color: var(--text-soft);">You are my forever. Every hardship led me to you.</p>
+            </div>
+            <div class="flex-row" style="margin-top: 20px;">
+                <button id="yesBtnProposal"> yes please</button>
+                <button id="noBtnProposal" class="btn-secondary" disabled style="opacity: 0.5;">🚫 NO way</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE: Certificate - WITH COUPLE IMAGE FROM uploads/us.PNG -->
+    <div id="certificatePage" class="page hidden-page">
+        <div class="page-content">
+            <h2 style="color:#b3414b; text-align: center;">📜 Our Marriage Certificate 📜</h2>
+            <div class="certificate" id="certificateDiv">
+                <h3>Marriage Certificate</h3>
+                <p style="font-size:1.2rem;"><strong>Marielle Jabonero</strong></p>
+                <p style="color: var(--gold); font-size: 1.5rem;">&</p>
+                <p style="font-size:1.2rem;"><strong>Ian Libosada</strong></p>
+                <!-- COUPLE IMAGE FROM uploads/us.PNG -->
+                <img src="us.PNG" 
+                     alt="Marielle & Ian" 
+                     class="cert-image"
+                     onerror="this.style.display='none'">
+                <p style="font-size:0.85rem; color: var(--text-soft); margin-top: 8px;">Together in love, witnessed by our journey and our son Favian.</p>
+                <p style="font-style:italic; font-size:0.8rem; color: #b3414b;">"Every monthsary missed, every birthday uncelebrated, has led to this eternal promise."</p>
+                <div class="signature-line" style="margin-top: 14px;">
+                    <p style="font-size:0.85rem;">✍️ Signatures:</p>
+                    <div id="certSignatureContainer">
+                        <p style="font-style:italic; color:#b3414b; font-size:0.8rem;">Signature will appear here</p>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align:center; font-size:0.85rem; color: var(--text-soft);">✍️ Draw your signature below:</p>
+            <canvas id="signatureCanvas" width="300" height="150"></canvas>
+            <div style="text-align: center;">
+                <button id="clearSignBtn" class="reset-sign">✖️ Clear</button>
+            </div>
+            <button id="applySignBtn" style="margin-top: 8px;">✅ Apply Signature</button>
+            <button id="downloadCertBtn" style="margin-top: 8px; background: #4a6b2a;">📥 Download Certificate</button>
+            <p style="text-align:center; font-size:0.7rem; color:#b37b7b; margin-top: 12px;">forever yours, my love.</p>
+        </div>
+    </div>
+
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+    (function() {
+        const CORRECT_CHILD = "Favian";
+        
+        // Image paths
+        const FAVIAN_IMAGE = "uploads/favian.jpg";
+        const COUPLE_IMAGE = "uploads/us.PNG";
+
+        const pages = {
+            gift: document.getElementById('giftPage'),
+            love: document.getElementById('page1'),
+            sad: document.getElementById('sadPage'),
+            bouquet: document.getElementById('bouquetPage'),
+            ianLetter: document.getElementById('ianLetterPage'),
+            favianLetter: document.getElementById('favianLetterPage'),
+            proposal: document.getElementById('proposalPage'),
+            certificate: document.getElementById('certificatePage')
+        };
+
+        let previousPage = null;
+        let signatureDataUrl = null;
+        let canvas, ctx, drawing = false, lastX = 0, lastY = 0;
+
+        function createParticles() {
+            const container = document.getElementById('particlesContainer');
+            const particles = ['💕', '💖', '💗', '💝', '💘', '🌹', '✨', '💐', '🩷', '🌸', '🕊️'];
+            setInterval(() => {
+                const particle = document.createElement('span');
+                particle.className = 'particle';
+                particle.textContent = particles[Math.floor(Math.random() * particles.length)];
+                particle.style.left = Math.random() * 95 + '%';
+                particle.style.animationDuration = (Math.random() * 8 + 8) + 's';
+                particle.style.fontSize = (Math.random() * 18 + 14) + 'px';
+                particle.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(particle);
+                setTimeout(() => particle.remove(), 12000);
+            }, 500);
+        }
+        createParticles();
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            clearTimeout(toast._timeout);
+            toast._timeout = setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        function launchConfetti() {
+            const colors = ['#ff6b8b', '#ffb703', '#4CAF50', '#2196F3', '#FF9800', '#E91E63', '#9C27B0', '#00BCD4', '#d4af37', '#ff8a80'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti-piece';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = -(Math.random() * 15 + 5) + 'px';
+                    confetti.style.width = (Math.random() * 10 + 6) + 'px';
+                    confetti.style.height = (Math.random() * 7 + 4) + 'px';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '3px';
+                    confetti.style.animationDuration = (Math.random() * 2.5 + 2.5) + 's';
+                    document.body.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 3500);
+                }, i * 25);
+            }
+        }
+
+        function showPage(page) {
+            const allPages = Object.values(pages);
+            allPages.forEach(p => {
+                if (!p.classList.contains('hidden-page') && p !== page) {
+                    p.classList.add('page-exit');
+                    setTimeout(() => {
+                        p.classList.remove('page-exit');
+                        p.classList.add('hidden-page');
+                    }, 300);
+                }
+            });
+            setTimeout(() => {
+                page.classList.remove('hidden-page');
+                page.classList.remove('page-exit');
+                const content = page.querySelector('.page-content');
+                if (content) content.scrollTop = 0;
+            }, previousPage ? 150 : 0);
+            previousPage = page;
+            if (page === pages.certificate) {
+                launchConfetti();
+                setTimeout(initCanvas, 400);
+            }
+            if (page === pages.proposal) launchConfetti();
+        }
+
+        document.getElementById('proceedToLoveBtn').addEventListener('click', () => showPage(pages.love));
+        document.getElementById('confirmLoveBtn').addEventListener('click', () => {
+            document.getElementById('securitySection').style.display = 'block';
+            setTimeout(() => {
+                const content = pages.love.querySelector('.page-content');
+                if (content) content.scrollTo({ top: content.scrollHeight, behavior: 'smooth' });
+            }, 150);
+        });
+        document.getElementById('noLoveBtn').addEventListener('click', () => showPage(pages.sad));
+        document.getElementById('backToLoveBtn').addEventListener('click', () => showPage(pages.love));
+
+        document.getElementById('verifyChildBtn').addEventListener('click', verifyChild);
+        document.getElementById('childNameInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') verifyChild();
+        });
+
+        function verifyChild() {
+            const input = document.getElementById('childNameInput').value.trim();
+            const errorEl = document.getElementById('securityError');
+            const imgContainer = document.getElementById('childImageContainer');
+            if (input.toLowerCase() === CORRECT_CHILD.toLowerCase()) {
+                errorEl.innerText = "";
+                imgContainer.innerHTML = `<img src="${FAVIAN_IMAGE}" alt="Favian" onerror="this.style.display='none'"><p>👶 Our Favian 🧸</p>`;
+                imgContainer.style.display = "block";
+                showToast('✅ That\'s our baby! Redirecting to your surprise...');
+                setTimeout(() => showPage(pages.bouquet), 1500);
+            } else {
+                errorEl.innerText = "❌ Not that name, love. Hint: Favian 💕";
+                errorEl.style.animation = 'none';
+                errorEl.offsetHeight;
+                errorEl.style.animation = 'shake 0.5s ease';
+                imgContainer.style.display = "none";
+            }
+        }
+
+        document.getElementById('openIanLetterBtn').addEventListener('click', () => showPage(pages.ianLetter));
+        document.getElementById('openFavianLetterBtn').addEventListener('click', () => showPage(pages.favianLetter));
+        document.getElementById('fromIanToProposalBtn').addEventListener('click', () => showPage(pages.proposal));
+        document.getElementById('backToBouquetFromFavianBtn').addEventListener('click', () => showPage(pages.bouquet));
+
+        document.getElementById('yesBtnProposal').addEventListener('click', () => {
+            launchConfetti();
+            showToast('💍 YES! Forever starts now! 💍');
+            setTimeout(() => showPage(pages.certificate), 800);
+        });
+
+        function initCanvas() {
+            canvas = document.getElementById('signatureCanvas');
+            if (!canvas) return;
+            ctx = canvas.getContext('2d');
+            const rect = canvas.getBoundingClientRect();
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = rect.width * dpr;
+            canvas.height = 150 * dpr;
+            canvas.style.width = rect.width + 'px';
+            canvas.style.height = '150px';
+            ctx.scale(dpr, dpr);
+            ctx.fillStyle = '#fffbf5';
+            ctx.fillRect(0, 0, rect.width, 150);
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = '#b3413a';
+            if (signatureDataUrl) {
+                const img = new Image();
+                img.onload = () => ctx.drawImage(img, 0, 0, rect.width, 150);
+                img.src = signatureDataUrl;
+            }
+            attachCanvasEvents();
+        }
+
+        function getCanvasCoords(e) {
+            const rect = canvas.getBoundingClientRect();
+            let clientX, clientY;
+            if (e.touches && e.touches.length > 0) {
+                clientX = e.touches[0].clientX;
+                clientY = e.touches[0].clientY;
+            } else if (e.changedTouches && e.changedTouches.length > 0) {
+                clientX = e.changedTouches[0].clientX;
+                clientY = e.changedTouches[0].clientY;
+            } else {
+                clientX = e.clientX;
+                clientY = e.clientY;
+            }
+            return {
+                x: Math.max(0, Math.min(rect.width, clientX - rect.left)),
+                y: Math.max(0, Math.min(150, clientY - rect.top))
+            };
+        }
+
+        function startDraw(e) { e.preventDefault(); drawing = true; const pos = getCanvasCoords(e); lastX = pos.x; lastY = pos.y; ctx.beginPath(); ctx.moveTo(lastX, lastY); }
+        function draw(e) { if (!drawing) return; e.preventDefault(); const pos = getCanvasCoords(e); ctx.beginPath(); ctx.moveTo(lastX, lastY); ctx.lineTo(pos.x, pos.y); ctx.stroke(); lastX = pos.x; lastY = pos.y; }
+        function stopDraw() { if (!drawing) return; drawing = false; ctx.beginPath(); saveSignature(); }
+        function saveSignature() { signatureDataUrl = canvas.toDataURL('image/png'); updateCertificateSignature(signatureDataUrl); }
+
+        function attachCanvasEvents() {
+            if (!canvas) return;
+            canvas.addEventListener('mousedown', startDraw);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDraw);
+            canvas.addEventListener('mouseleave', stopDraw);
+            canvas.addEventListener('touchstart', startDraw, { passive: false });
+            canvas.addEventListener('touchmove', draw, { passive: false });
+            canvas.addEventListener('touchend', stopDraw);
+            canvas.addEventListener('touchcancel', stopDraw);
+        }
+
+        function clearCanvas() {
+            if (ctx && canvas) {
+                const rect = canvas.getBoundingClientRect();
+                ctx.fillStyle = '#fffbf5';
+                ctx.fillRect(0, 0, rect.width, 150);
+                signatureDataUrl = null;
+                updateCertificateSignature(null);
+                showToast('Signature cleared');
+            }
+        }
+
+        function updateCertificateSignature(dataUrl) {
+            const container = document.getElementById('certSignatureContainer');
+            if (!container) return;
+            if (dataUrl) {
+                container.innerHTML = `<img src="${dataUrl}" class="signature-img" alt="Signature"><p style="font-size:0.7rem; color:#b3414b;">~ Signed with love ~</p>`;
+            } else {
+                container.innerHTML = `<p style="font-style:italic; color:#b3414b; font-size:0.8rem;">Signature will appear here</p>`;
+            }
+        }
+
+        document.getElementById('applySignBtn').addEventListener('click', () => {
+            if (signatureDataUrl) {
+                updateCertificateSignature(signatureDataUrl);
+                showToast('✅ Signature applied!');
+            } else {
+                showToast('⚠️ Please draw your signature first');
+            }
+        });
+        document.getElementById('clearSignBtn').addEventListener('click', clearCanvas);
+
+        document.getElementById('downloadCertBtn').addEventListener('click', () => {
+            const certDiv = document.getElementById('certificateDiv');
+            if (signatureDataUrl) updateCertificateSignature(signatureDataUrl);
+            setTimeout(() => {
+                html2canvas(certDiv, { scale: 2, backgroundColor: '#fef7e0', allowTaint: true, useCORS: true })
+                .then(canvasImg => {
+                    const link = document.createElement('a');
+                    link.download = 'Marriage_Certificate_Mayie_Ian.png';
+                    link.href = canvasImg.toDataURL('image/png');
+                    link.click();
+                    showToast('📥 Certificate downloaded!');
+                }).catch(() => showToast('⚠️ Could not download. Please try again.'));
+            }, 100);
+        });
+
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                if (canvas && !pages.certificate.classList.contains('hidden-page')) {
+                    saveSignature();
+                    initCanvas();
+                }
+            }, 300);
+        });
+
+        document.body.addEventListener('touchmove', function(e) {
+            const target = e.target;
+            const scrollableContent = target.closest('.page-content');
+            if (!scrollableContent) e.preventDefault();
+        }, { passive: false });
+
+        showPage(pages.gift);
+    })();
+    </script>
+</body>
+</html>
